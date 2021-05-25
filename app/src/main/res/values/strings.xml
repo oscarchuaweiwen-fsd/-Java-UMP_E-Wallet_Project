@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UMP_E-Wallet_Project</string>
+    <string name="wrongpassword">Password should be at least 6 characters</string>
+    <string name="passwordnotcorrect">Password does not matched!</string>
+</resources>

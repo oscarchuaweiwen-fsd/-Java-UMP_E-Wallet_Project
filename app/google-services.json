@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "119010488885",
+    "project_id": "ump-e-wallet-project-ebfa9",
+    "storage_bucket": "ump-e-wallet-project-ebfa9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119010488885:android:112397d7d7ef8c79ca777c",
+        "android_client_info": {
+          "package_name": "com.example.ump_e_wallet_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119010488885-rf6dsb1allr0nnipk5bla32hb9tobh6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdDnzsnH2t0wrjYtNEOISJaRq0ZzhC_vE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119010488885-rf6dsb1allr0nnipk5bla32hb9tobh6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

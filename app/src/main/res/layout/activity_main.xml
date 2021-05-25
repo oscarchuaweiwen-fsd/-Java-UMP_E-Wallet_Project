@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#93F3F0"
+    tools:context=".MainActivity"
+    >
+
+
+
+    <Button
+        android:id="@+id/btn.login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="58dp"
+        android:text="Log In"
+        android:textSize="16sp"
+        app:backgroundTint="#01ACA4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv.warningnoacc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginLeft="61dp"
+        android:text="Don't have an account?"
+        android:textColor="#020202"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv.intentsignup"
+        app:layout_constraintStart_toStartOf="@+id/btn.login" />
+
+    <TextView
+        android:id="@+id/tv.intentsignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="8dp"
+        android:text="Sign Up"
+        android:textColor="#000000"
+        android:clickable="true"
+        android:onClick="click"
+        app:layout_constraintStart_toEndOf="@+id/tv.warningnoacc"
+        app:layout_constraintTop_toBottomOf="@+id/btn.login" />
+
+    <TextView
+        android:id="@+id/tv.ump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Login In with your email adress"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tv.welcomeback"
+        app:layout_constraintTop_toBottomOf="@+id/tv.welcomeback" />
+
+    <TextView
+        android:id="@+id/tv.welcomeback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="196dp"
+        android:text="Welcome Back!"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="@+id/iv.logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv.intentforgotpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot your password?"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:clickable="true"
+        android:onClick="click"
+        app:layout_constraintEnd_toEndOf="@+id/et.password"
+        app:layout_constraintTop_toBottomOf="@+id/et.password" />
+
+    <EditText
+        android:id="@+id/et.password"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="Enter your password..."
+        android:inputType="textPassword"
+        android:textColor="#0B0B0B"
+        android:textColorHint="#000000"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et.emailaddress" />
+
+    <EditText
+        android:id="@+id/et.emailaddress"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:ems="10"
+        android:hint="Enter your email..."
+        android:inputType="textPersonName"
+        android:textColorHint="#0B0B0B"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv.ump" />
+
+    <ImageView
+        android:id="@+id/iv.logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv.welcomeback"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
