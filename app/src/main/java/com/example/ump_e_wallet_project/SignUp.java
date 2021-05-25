@@ -81,6 +81,7 @@ public class SignUp extends AppCompatActivity {
                                 userinfo.put("name",name1);
                                 userinfo.put("phonenumber",phonenumber1);
                                 userinfo.put("email",email1);
+                                userinfo.put("balance","0");
 
                                 db.collection("user").document(id).set(userinfo);
 

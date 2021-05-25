@@ -11,78 +11,98 @@
         android:id="@+id/tv.welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
         android:text="Welcome Back, "
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="48dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv.username"
+        app:layout_constraintEnd_toStartOf="@+id/tv.username"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv.username"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="48dp" />
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv.welcome"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
         android:text="Total Balance"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="101dp" />
+        app:layout_constraintStart_toStartOf="@+id/tv.welcome"
+        app:layout_constraintTop_toBottomOf="@+id/tv.welcome" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv.balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RM"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="134dp" />
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
         android:text="Top up"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="209dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
         android:text="My card"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="304dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="@+id/button" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="304dp"
         android:text="Withdraw"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="304dp" />
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="47dp"
         android:text="Pay"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="209dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Transfer"
-        tools:layout_editor_absoluteX="261dp"
-        tools:layout_editor_absoluteY="209dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button2" />
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="397dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
