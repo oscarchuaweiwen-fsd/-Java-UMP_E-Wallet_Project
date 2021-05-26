@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#93F3F0"
     tools:context=".TopUp">
 
     <TextView
@@ -13,7 +14,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
+        android:background="#93F3F0"
         android:text="Top Up"
+        android:textColor="#000000"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +29,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="130dp"
         android:text="Enter your preferred amount"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +43,8 @@
         android:ems="10"
         android:hint="RM ..."
         android:inputType="textPersonName"
+        android:text="RM "
+        android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv.amount" />
@@ -62,36 +68,42 @@
         android:layout_marginTop="21dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et.amount">
+        app:layout_constraintTop_toBottomOf="@+id/et.amount"
+        >
 
         <RadioButton
             android:id="@+id/rb.a10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="showAmount"
             android:text="RM 10"
-            android:onClick="showAmount"/>
+            android:textColor="#000000" />
 
         <RadioButton
             android:id="@+id/rb.a20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="showAmount"
             android:text="RM 20"
-            android:onClick="showAmount"/>
+            android:textColor="#000000" />
 
         <RadioButton
             android:id="@+id/rb.a30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="showAmount"
             android:text="RM 30"
-            android:onClick="showAmount"/>
+            android:textColor="#000000" />
 
         <RadioButton
             android:id="@+id/rb.a50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="showAmount"
             android:text="RM 50"
-            android:onClick="showAmount"/>
+            android:textColor="#000000" />
+
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

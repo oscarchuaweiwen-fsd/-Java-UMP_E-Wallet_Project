@@ -63,45 +63,51 @@ public class SignUp extends AppCompatActivity {
                     password.setError("Please enter your password!");
                     password.requestFocus();
                 }else if(!(emailid.isEmpty() && passwordid.isEmpty())){
-                    mFirebaseAuth.createUserWithEmailAndPassword(emailid,passwordid).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(!task.isSuccessful()){
-                                Toast.makeText(SignUp.this, "Sign Up Unsuccessful!",Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(SignUp.this, "Sign Up Successful!",Toast.LENGTH_SHORT).show();
 
-                                FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                                String id = mFirebaseAuth.getCurrentUser().getUid();
-                                String name1 = name.getText().toString();
-                                String phonenumber1 = phonenumber.getText().toString();
-                                String email1 = email.getText().toString();
+                    if(passwordid.length()<6){
+                        password.setError("Password is less than 6 character!");
+                    }else{
+                        mFirebaseAuth.createUserWithEmailAndPassword(emailid,passwordid).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(!task.isSuccessful()){
+                                    Toast.makeText(SignUp.this, "Sign Up Unsuccessful!",Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(SignUp.this, "Sign Up Successful!",Toast.LENGTH_SHORT).show();
 
-                                Map<String, Object> userinfo = new HashMap<>();
-                                userinfo.put("name",name1);
-                                userinfo.put("phonenumber",phonenumber1);
-                                userinfo.put("email",email1);
-                                userinfo.put("balance","0");
+                                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                                    String id = mFirebaseAuth.getCurrentUser().getUid();
+                                    String name1 = name.getText().toString();
+                                    String phonenumber1 = phonenumber.getText().toString();
+                                    String email1 = email.getText().toString();
 
-                                db.collection("user").document(id).set(userinfo);
+                                    Map<String, Object> userinfo = new HashMap<>();
+                                    userinfo.put("name",name1);
+                                    userinfo.put("phonenumber",phonenumber1);
+                                    userinfo.put("email",email1);
+                                    userinfo.put("balance","0");
 
-                                user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Toast.makeText(SignUp.this, "Verification Email Has Been Sent!" ,Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                       Log.d("TAG", "Verification Email Sent Error" + e.getMessage());
-                                    }
-                                });
+                                    db.collection("user").document(id).set(userinfo);
 
-                                Intent back2home = new Intent(SignUp.this,MainActivity.class);
-                                startActivity(back2home);
+                                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(SignUp.this, "Verification Email Has Been Sent!" ,Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("TAG", "Verification Email Sent Error" + e.getMessage());
+                                        }
+                                    });
+
+                                    Intent back2home = new Intent(SignUp.this,MainActivity.class);
+                                    startActivity(back2home);
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
+
                 }
             }
         });

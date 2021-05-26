@@ -3,6 +3,7 @@ package com.example.ump_e_wallet_project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -29,7 +34,8 @@ public class TopUp extends AppCompatActivity {
     private Button button;
     private EditText eta;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private static final String TAG = "MainActivity";
+    private FirebaseAuth mauth = FirebaseAuth.getInstance();
+    private static final String TAG = "TopUp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,39 +47,68 @@ public class TopUp extends AppCompatActivity {
         int radioId = radioGroup.getCheckedRadioButtonId();
         radioButton =findViewById(radioId);
         button = findViewById(R.id.btn_topup);
+        eta = findViewById(R.id.et_amount);
 
+        FirebaseUser user = mauth.getCurrentUser();
+        String uid = user.getUid();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String str = radioButton.getText().toString();
-                int amount = Integer.parseInt(str.replaceAll("[\\D]" , "" ));
+                if(radioGroup.getCheckedRadioButtonId() == -1){
+                    String x = eta.getText().toString();
+                    int a = Integer.parseInt(x.replaceAll("[\\D]" , "" ));
+                    topUp(a,uid);
+                    Toast.makeText(TopUp.this,"Radio Button not checked",Toast.LENGTH_SHORT).show();
+                }else{
+                    String str = eta.getText().toString();
+                    int amount = Integer.parseInt(str.replaceAll("[\\D]" , "" ));
+                    topUp(amount,uid);
+                    Toast.makeText(TopUp.this,"Radio Button checked",Toast.LENGTH_SHORT).show();
+                }
 
-                topUp(amount);
 
             }
         });
     }
 
-    public void topUp(int amount){
-        Map<String, Object> map = new HashMap<>();
+    public void topUp(int amount,String uid){
 
-        map.put("amount",amount);
 
-        db.collection("TopUpAmount").document("hello").set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+        DocumentReference userinfo = db.collection("user").document(uid);
+
+        userinfo.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(TopUp.this,"Top up Successfully",Toast.LENGTH_SHORT).show();
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(TopUp.this,"Top up Failed",Toast.LENGTH_SHORT).show();
-                Log.d(TAG,e.toString());
+                String value = document.getData().get("balance").toString();
+                int value2 = Integer.parseInt(value);
+
+                int newbalance = value2 + amount;
+
+                Integer i = newbalance;
+                String x = i.toString();
+
+
+                db.collection("user").document(uid).update("balance",x).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(TopUp.this,"Top up Successfully",Toast.LENGTH_SHORT).show();
+                        Intent gotomainpage = new Intent(TopUp.this,HomePage.class);
+                        startActivity(gotomainpage);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(TopUp.this,"Top up Failed",Toast.LENGTH_SHORT).show();
+                        Log.d(TAG,e.toString());
+                    }
+                });
             }
         });
+
 
     }
 
@@ -91,7 +126,7 @@ public class TopUp extends AppCompatActivity {
         int amount = Integer.parseInt(str.replaceAll("[\\D]" , "" ));
         String a =  String.valueOf(amount);
 
-        eta.setText("RM " + a);
+        eta.setText("RM "+ a);
     }
 }
 
