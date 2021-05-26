@@ -11,8 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.basgeekball.awesomevalidation.AwesomeValidation;
-import com.basgeekball.awesomevalidation.ValidationStyle;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,12 +24,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+import nu.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter;
+
+
 public class SignUp extends AppCompatActivity {
     private EditText name, email, phonenumber, password,passwordc;
     private Button buttonsignup;
     FirebaseAuth mFirebaseAuth;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    AwesomeValidation awesomeValidation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +47,9 @@ public class SignUp extends AppCompatActivity {
         passwordc = findViewById(R.id.et_passwordsignupc);
         buttonsignup = findViewById(R.id.btn_signup);
 
+        PasswordStrengthMeter meter = findViewById(R.id.passwordInputMeter);
+        meter.setEditText(password);
 
-        awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC) ;
-
-        awesomeValidation.addValidation(SignUp.this,R.id.et_passwordsignup,".{6,}",R.string.wrongpassword);
-        awesomeValidation.addValidation(SignUp.this,R.id.et_passwordsignupc,R.id.et_passwordsignup,R.string.passwordnotcorrect);
         buttonsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
