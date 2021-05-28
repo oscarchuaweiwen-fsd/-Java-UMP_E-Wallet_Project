@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UMP_EWallet_Project">
-        <activity android:name=".HomePage"></activity>
+        <activity android:name=".Transfer2"></activity>
+        <activity android:name=".Transfer" />
+        <activity android:name=".HomePage" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".TopUp" />
         <activity android:name=".SignUp" />

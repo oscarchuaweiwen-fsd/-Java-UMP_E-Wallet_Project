@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class HomePage extends AppCompatActivity {
 
     private TextView username,balance;
-    private Button topup,signout;
+    private Button topup,signout,transfer;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -35,6 +35,7 @@ public class HomePage extends AppCompatActivity {
         balance = findViewById(R.id.tv_balance);
         topup = findViewById(R.id.btn_topup);
         signout = findViewById(R.id.btn_signout);
+        transfer = findViewById(R.id.btn_transfer);
 
         FirebaseUser user = mAuth.getCurrentUser();
         String uid = user.getUid();
@@ -58,6 +59,14 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent topuppage = new Intent(HomePage.this,TopUp.class);
                 startActivity(topuppage);
+            }
+        });
+
+        transfer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent transferpage = new Intent(HomePage.this,Transfer.class);
+                startActivity(transferpage);
             }
         });
 
