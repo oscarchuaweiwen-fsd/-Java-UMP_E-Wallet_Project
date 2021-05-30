@@ -14,6 +14,17 @@ public class UserResponse {
         this.card = card;
     }
 
+    private ArrayList<Payment> payment;
+
+    public ArrayList<Payment> getPayment(){
+        return payment;
+    }
+
+    public void setPayment(ArrayList<Payment> payment){
+        this.payment = payment;
+    }
+
+    // others
     public String getBalance() {
         return balance;
     }

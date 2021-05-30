@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class HomePage extends AppCompatActivity {
 
     private TextView username,balance;
-    private Button topup,signout,transfer,mycard;
+    private Button topup,signout,transfer,mycard,payment;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -37,6 +37,7 @@ public class HomePage extends AppCompatActivity {
         signout = findViewById(R.id.btn_signout);
         transfer = findViewById(R.id.btn_transfer);
         mycard = findViewById(R.id.btn_mycard);
+        payment = findViewById(R.id.btn_pay);
 
         FirebaseUser user = mAuth.getCurrentUser();
         String uid = user.getUid();
@@ -74,10 +75,7 @@ public class HomePage extends AppCompatActivity {
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.signOut();
-                Toast.makeText(HomePage.this, "Sign out Successfully!", Toast.LENGTH_SHORT).show();
-                Intent gotomainpage = new Intent(HomePage.this,MainActivity.class);
-                startActivity(gotomainpage);
+
 
 
             }
@@ -88,6 +86,14 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mycardpage = new Intent(HomePage.this,MyCard.class);
                 startActivity(mycardpage);
+            }
+        });
+
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent paymentpage = new Intent(HomePage.this,Pay.class);
+                startActivity(paymentpage);
             }
         });
     }

@@ -97,12 +97,19 @@ public class MainActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
-
+                                    String uid = user.getUid();
                                     if(user.isEmailVerified()){
                                         Toast.makeText(MainActivity.this, "Sign In Successful!", Toast.LENGTH_SHORT).show();
 
                                         Intent homepage = new Intent(MainActivity.this,HomePage.class);
                                         startActivity(homepage);
+
+                                        if(uid.equals("qnMrz6BvpBXI7az4iC2bh2E10m33")){
+                                            Intent adminpage = new Intent(MainActivity.this,AdminPay.class);
+                                            startActivity(adminpage);
+                                        }
+
+
                                     }else{
                                         Toast.makeText(MainActivity.this, "Please verify your email!", Toast.LENGTH_SHORT).show();
 
