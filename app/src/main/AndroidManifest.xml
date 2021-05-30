@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UMP_EWallet_Project">
-        <activity android:name=".MyCard2"></activity>
+        <activity android:name=".MyCard3"></activity>
+        <activity android:name=".MyCard2" />
         <activity android:name=".MyCard" />
         <activity android:name=".Transfer2" />
         <activity android:name=".Transfer" />

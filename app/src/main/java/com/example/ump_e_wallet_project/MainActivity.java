@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.hardware.biometrics.BiometricManager;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;

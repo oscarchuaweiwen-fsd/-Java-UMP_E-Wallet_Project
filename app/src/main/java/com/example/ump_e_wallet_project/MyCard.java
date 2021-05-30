@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,6 +68,14 @@ public class MyCard extends AppCompatActivity {
                             ArrayAdapter arrayAdapter = new ArrayAdapter(MyCard.this, android.R.layout.simple_list_item_1,arrayList);
                             lv.setAdapter(arrayAdapter);
 
+
+                            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    Toast.makeText(MyCard.this,arrayList.get(position).toString(),Toast.LENGTH_SHORT).show();
+                                    Intent gotomycard = new Intent()
+                                }
+                            });
                         }
 
 
