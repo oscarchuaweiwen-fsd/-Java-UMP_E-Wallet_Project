@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Paint;
-import android.hardware.biometrics.BiometricManager;
+
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -89,29 +89,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onAuthenticationFailed() {
-                super.onAuthenticationFailed();
-            }
-        });
-
-        final BiometricPrompt.PromptInfo  promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Login")
-                .setDescription("User fingerprint to login")
-                .setNegativeButtonText("cancel")
-                .build();
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
                 String emailinput = email.getText().toString();
                 String passwordinput = password.getText().toString();
-                biometricPrompt.authenticate(promptInfo);
                 mAuth.signInWithEmailAndPassword(emailinput, passwordinput)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -151,6 +130,28 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+        final BiometricPrompt.PromptInfo  promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Login")
+                .setDescription("User fingerprint to login")
+                .setNegativeButtonText("cancel")
+                .build();
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                                      biometricPrompt.authenticate(promptInfo);
+
 
     }
 

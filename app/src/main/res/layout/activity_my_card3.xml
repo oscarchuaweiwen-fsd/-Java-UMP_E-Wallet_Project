@@ -4,6 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#93F3F0"
     tools:context=".MyCard3">
 
+    <TextView
+        android:id="@+id/tv.exp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv.cvv"
+        app:layout_constraintStart_toStartOf="@+id/tv.cvv"
+        app:layout_constraintTop_toBottomOf="@+id/tv.cvv" />
+
+    <TextView
+        android:id="@+id/tv.card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv.cvv"
+        app:layout_constraintStart_toStartOf="@+id/tv.cvv"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/tv.cvv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="13dp"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/tv.card" />
+
+    <Button
+        android:id="@+id/btn.delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="remove this card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="27dp"
+        android:text="Card Info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

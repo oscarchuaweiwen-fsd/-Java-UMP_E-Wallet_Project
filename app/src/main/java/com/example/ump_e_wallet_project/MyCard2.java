@@ -1,9 +1,11 @@
 package com.example.ump_e_wallet_project;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,6 +50,7 @@ public class MyCard2 extends AppCompatActivity {
         addthiscard.setOnClickListener(new View.OnClickListener() {
             private static final String TAG = "MyCard2";
 
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
 

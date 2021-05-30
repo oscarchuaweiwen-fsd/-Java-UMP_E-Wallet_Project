@@ -35,6 +35,7 @@ public class MyCard extends AppCompatActivity {
     private ListView lv;
     ArrayList <String>arrayList = new ArrayList<>();
     FirebaseAuth mauth = FirebaseAuth.getInstance();
+    ArrayList <String>listviewlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,18 +63,41 @@ public class MyCard extends AppCompatActivity {
 
                             for (Card language: cards){
                                 arrayList.add(language.getCarddetail());
-                                Log.d(TAG,language.getCarddetail());
+                                arrayList.add(language.getCvv());
+                                arrayList.add(language.getExp());
                             }
 
-                            ArrayAdapter arrayAdapter = new ArrayAdapter(MyCard.this, android.R.layout.simple_list_item_1,arrayList);
+
+                            for(int x = 0; x<arrayList.size(); x = x + 3){
+                                listviewlist.add(arrayList.get(x));
+                            }
+
+                            Log.d(TAG, "size : " + String.valueOf(cards.size()));
+                            ArrayAdapter arrayAdapter = new ArrayAdapter(MyCard.this, android.R.layout.simple_list_item_1,listviewlist);
                             lv.setAdapter(arrayAdapter);
 
 
                             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                    Toast.makeText(MyCard.this,arrayList.get(position).toString(),Toast.LENGTH_SHORT).show();
-                                    Intent gotomycard = new Intent()
+                                    Log.d(TAG, "checking" + arrayList.get(position).toString());
+                                    Toast.makeText(MyCard.this,"position" + position + " " + arrayList.get(position).toString(),Toast.LENGTH_SHORT).show();
+                                    Intent gotomycard = new Intent(MyCard.this,MyCard3.class);
+
+                                    for(int x=0;x<3;x++){
+                                        int arrayposition = position * 3;
+
+                                        if(x==0){
+                                            gotomycard.putExtra("carddetail",arrayList.get(arrayposition));
+                                        }else if(x==1){
+                                            gotomycard.putExtra("cvv",arrayList.get(arrayposition+1));
+                                        }else if(x==2){
+                                            gotomycard.putExtra("exp",arrayList.get(arrayposition+2));
+                                        }
+                                    }
+
+
+                                    startActivity(gotomycard);
                                 }
                             });
                         }
