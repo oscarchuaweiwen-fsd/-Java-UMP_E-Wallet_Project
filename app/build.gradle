@@ -46,5 +46,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.gms:google-services:4.3.8'
     implementation 'nu.aaro.gustav:passwordstrengthmeter:0.4'
+    implementation 'androidx.biometric:biometric:1.1.0'
 
 }

@@ -2,6 +2,9 @@ package com.example.ump_e_wallet_project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Paint;
@@ -27,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +55,54 @@ public class MainActivity extends AppCompatActivity {
         intentSignup.setPaintFlags(intentSignup.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         intentForgotpassword.setPaintFlags(intentForgotpassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
+        final BiometricManager biometricManager = BiometricManager.from(this);
+
+        switch (biometricManager.canAuthenticate()){
+
+            case BiometricManager.BIOMETRIC_SUCCESS:
+
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                Toast.makeText(this,"No fingerprint sensor",Toast.LENGTH_LONG).show();
+                login.setVisibility(View.INVISIBLE);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                Toast.makeText(this,"Biometric sensor is not available",Toast.LENGTH_LONG).show();
+                login.setVisibility(View.INVISIBLE);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                Toast.makeText(this,"Your device don't have any fingerprint, check your security setting",Toast.LENGTH_LONG).show();
+                login.setVisibility(View.INVISIBLE);
+                break;
+        }
+
+        Executor executor = ContextCompat.getMainExecutor(this);
+
+        final BiometricPrompt biometricPrompt = new BiometricPrompt(MainActivity.this,executor,new BiometricPrompt.AuthenticationCallback(){
+
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+        final BiometricPrompt.PromptInfo  promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Login")
+                .setDescription("User fingerprint to login")
+                .setNegativeButtonText("cancel")
+                .build();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String emailinput = email.getText().toString();
                 String passwordinput = password.getText().toString();
-
+                biometricPrompt.authenticate(promptInfo);
                 mAuth.signInWithEmailAndPassword(emailinput, passwordinput)
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
