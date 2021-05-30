@@ -15,6 +15,8 @@ import android.widget.ListView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,17 +32,20 @@ public class MyCard extends AppCompatActivity {
     private static final String TAG = "MyCard";
     private ListView lv;
     ArrayList <String>arrayList = new ArrayList<>();
+    FirebaseAuth mauth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_card);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+        FirebaseUser user = mauth.getCurrentUser();
+        String uid = user.getUid();
 
         addmycard = findViewById(R.id.btn_addnewcard);
         lv = findViewById(R.id.lv_carddetail);
 
-        DocumentReference docRef = db.collection("user").document("65pH8UOnV4Pz8oxogsqsL9eE91L2");
+        DocumentReference docRef = db.collection("user").document(uid);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -60,6 +65,7 @@ public class MyCard extends AppCompatActivity {
 
                             ArrayAdapter arrayAdapter = new ArrayAdapter(MyCard.this, android.R.layout.simple_list_item_1,arrayList);
                             lv.setAdapter(arrayAdapter);
+
                         }
 
 
