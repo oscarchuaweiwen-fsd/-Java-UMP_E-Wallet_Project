@@ -36,7 +36,7 @@ import java.io.ByteArrayOutputStream;
 public class HomePage extends AppCompatActivity {
     private ImageView myImage;
     private TextView username,balance;
-    private Button topup,signout,transfer,mycard,payment;
+    private Button topup,signout,transfer,mycard,payment,withdraw;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private StorageReference mStorage;
@@ -53,6 +53,8 @@ public class HomePage extends AppCompatActivity {
         mycard = findViewById(R.id.btn_mycard);
         payment = findViewById(R.id.btn_pay);
         myImage = findViewById(R.id.iv_imageview);
+        withdraw = findViewById(R.id.btn_withdraw);
+
         FirebaseUser user = mAuth.getCurrentUser();
         String uid = user.getUid();
 
@@ -111,6 +113,14 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent paymentpage = new Intent(HomePage.this,Pay.class);
                 startActivity(paymentpage);
+            }
+        });
+
+        withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent withdrawpage = new Intent(HomePage.this,Withdraw.class);
+                startActivity(withdrawpage);
             }
         });
 

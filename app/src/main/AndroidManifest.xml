@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ump_e_wallet_project">
-        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.camera.any"
         android:required="true" />
@@ -16,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UMP_EWallet_Project">
-        <activity android:name=".Pay2"></activity>
+        <activity android:name=".Withdraw2"></activity>
+        <activity android:name=".Withdraw" />
+        <activity android:name=".Pay2" />
         <activity android:name=".AdminPay" />
         <activity android:name=".Pay" />
         <activity android:name=".MyCard3" />

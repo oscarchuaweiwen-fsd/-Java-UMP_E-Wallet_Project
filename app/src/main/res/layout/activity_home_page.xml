@@ -135,7 +135,7 @@
     <Button
         android:id="@+id/btn.upload"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:onClick="uploadImage"
         android:text="Upload Profile Picture" />
 
