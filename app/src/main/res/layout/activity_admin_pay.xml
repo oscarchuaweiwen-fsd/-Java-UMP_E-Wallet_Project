@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminPay">
+    tools:context=".AdminPay"
+    android:background="#93F3F0"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView8"
@@ -12,21 +14,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="27dp"
         android:layout_marginTop="26dp"
-        android:text="Card Info"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Card Information"
+        android:textColor="@color/black"
+        android:textSize="36sp" />
 
     <EditText
         android:id="@+id/et.adminuid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="111dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
+        android:textColor="@color/black"
+        android:textColorHint="#515151"
         android:hint="Enter Student UID"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/et.paymentname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:textColor="@color/black"
+        android:textColorHint="#515151"
+        android:hint="Enter Payment Details"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/et.amountadding"
@@ -35,40 +49,29 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="22dp"
         android:ems="10"
+        android:textColor="@color/black"
+        android:textColorHint="#515151"
         android:hint="Enter Amount "
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et.paymentname" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btn.addpayment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="70dp"
         android:text="Add Payment"
-        app:layout_constraintBottom_toTopOf="@+id/btn.adminsignout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_gravity="center"
+        app:backgroundTint="#01ACA4"/>
 
     <Button
         android:id="@+id/btn.adminsignout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginTop="30dp"
         android:text="Sign out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btn.addpayment" />
+        app:backgroundTint="#01ACA4"
+        android:layout_gravity="center"
+        />
 
-    <EditText
-        android:id="@+id/et.paymentname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Enter Payment Details"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et.adminuid" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

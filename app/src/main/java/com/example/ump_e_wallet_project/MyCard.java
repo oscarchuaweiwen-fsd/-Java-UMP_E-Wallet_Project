@@ -81,7 +81,7 @@ public class MyCard extends AppCompatActivity {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                     Log.d(TAG, "checking" + arrayList.get(position).toString());
-                                    Toast.makeText(MyCard.this,"position" + position + " " + arrayList.get(position).toString(),Toast.LENGTH_SHORT).show();
+
                                     Intent gotomycard = new Intent(MyCard.this,MyCard3.class);
 
                                     for(int x=0;x<3;x++){

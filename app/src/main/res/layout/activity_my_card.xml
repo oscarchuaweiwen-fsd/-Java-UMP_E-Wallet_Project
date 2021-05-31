@@ -1,45 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#93F3F0"
-    tools:context=".MyCard">
-
-    <Button
-        android:id="@+id/btn.addnewcard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="46dp"
-        android:text="Add New CArd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lv.carddetail" />
-
-    <ListView
-        android:id="@+id/lv.carddetail"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="14dp"
-        android:background="#93F3F0"
-        android:cacheColorHint="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/btn.addnewcard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    tools:context=".MyCard"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="26dp"
-        android:layout_marginBottom="28dp"
         android:text="My Card"
-        app:layout_constraintBottom_toTopOf="@+id/lv.carddetail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColor="@color/black"
+        android:textSize="36sp" />
+
+    <ListView
+        android:id="@+id/lv.carddetail"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="5dp"
+        android:background="#93F3F0"
+        android:cacheColorHint="@color/black" />
+
+    <Button
+        android:id="@+id/btn.addnewcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Add New CArd"
+        app:backgroundTint="#01ACA4"/>
+</LinearLayout>

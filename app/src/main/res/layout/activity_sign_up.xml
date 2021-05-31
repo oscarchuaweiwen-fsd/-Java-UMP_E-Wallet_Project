@@ -1,128 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#93F3F0"
+    android:orientation="vertical"
     tools:context=".SignUp">
-
-    <nu.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter
-        android:id="@+id/passwordInputMeter"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="332dp"
-        app:animateChanges="true"
-        app:animationDuration="300"
-        app:labelTextSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:showStrengthBar="true"
-        app:showStrengthLabel="true"
-        app:strengthBarHeight="5dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btn.signup"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="57dp"
-        android:text="Sign up"
-        android:textSize="16sp"
-        app:backgroundTint="#01ACA4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/et.phonenumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="17dp"
-        android:ems="10"
-        android:hint="Enter your phone number..."
-        android:inputType="textPersonName"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/et.passwordsignup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tv.signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="26dp"
         android:text="Sign Up"
-        android:textColor="#000000"
-        android:textSize="36sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/black"
+        android:textSize="36sp" />
 
     <EditText
         android:id="@+id/et.name"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="22dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
+        android:ems="15"
         android:hint="Enter your name..."
         android:inputType="textPersonName"
-        android:textColorHint="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv.signup" />
+        android:textColor="@color/black"
+        android:textColorHint="#515151" />
 
     <EditText
         android:id="@+id/et.emailaddresssignup"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
+        android:layout_marginTop="15dp"
+        android:ems="15"
         android:hint="Enter your email address..."
         android:inputType="textPersonName"
-        android:textColorHint="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et.name" />
+        android:textColor="@color/black"
+        android:textColorHint="#515151" />
+
+    <EditText
+        android:id="@+id/et.phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:ems="15"
+        android:hint="Enter your phone number..."
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="#515151" />
 
     <EditText
         android:id="@+id/et.passwordsignup"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-
-        android:layout_marginBottom="18dp"
-        android:ems="10"
+        android:layout_marginTop="15dp"
+        android:ems="15"
         android:hint="Enter your password..."
         android:inputType="textPassword"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/passwordInputMeter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/black"
+        android:textColorHint="#515151" />
+
+    <nu.aaro.gustav.passwordstrengthmeter.PasswordStrengthMeter
+        android:id="@+id/passwordInputMeter"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="80dp"
+        app:animateChanges="true"
+        app:animationDuration="300"
+        app:labelTextSize="12sp"
+        app:showStrengthBar="true"
+        app:showStrengthLabel="true"
+        app:strengthBarHeight="5dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/et.passwordsignupc"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
-        android:ems="10"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="1dp"
+        android:ems="15"
         android:hint="Enter your password again..."
         android:inputType="textPassword"
-        android:textColorHint="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInputMeter" />
+        android:textColor="@color/black"
+        android:textColorHint="#515151" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn.signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:baselineAligned="false"
+        android:text="Sign up"
+        android:textSize="16sp"
+        app:backgroundTint="#01ACA4" />
+
+</LinearLayout>

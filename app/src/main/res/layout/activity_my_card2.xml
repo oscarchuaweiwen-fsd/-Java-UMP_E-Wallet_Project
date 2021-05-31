@@ -1,57 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#93F3F0"
-    tools:context=".MyCard2">
-
-    <EditText
-        android:id="@+id/et.cardnumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Card Number"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <EditText
-        android:id="@+id/et.expireddate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="19dp"
-        android:ems="10"
-        android:hint="MM/YY"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et.cardnumber" />
-
-    <EditText
-        android:id="@+id/et.cvv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="27dp"
-        android:ems="10"
-        android:hint="CVV"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et.expireddate" />
-
-    <Button
-        android:id="@+id/btn.addthiscard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="208dp"
-        android:text="add this card"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    tools:context=".MyCard2"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView5"
@@ -60,7 +15,53 @@
         android:layout_marginStart="27dp"
         android:layout_marginTop="26dp"
         android:text="Card Info"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/black"
+        android:textSize="36sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/et.cardnumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="15dp"
+        android:ems="15"
+        android:hint="Card Number"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="#515151"
+        />
+
+    <EditText
+        android:id="@+id/et.expireddate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="15dp"
+        android:ems="15"
+        android:hint="MM/YY"
+        android:inputType="textPersonName"
+        android:textColorHint="#515151"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/et.cvv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="15dp"
+        android:ems="15"
+        android:hint="CVV"
+        android:inputType="textPersonName"
+        android:textColorHint="#515151"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/btn.addthiscard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:layout_gravity="center"
+        android:text="add this card"
+        app:backgroundTint="#01ACA4"/>
+
+</LinearLayout>

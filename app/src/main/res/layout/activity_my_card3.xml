@@ -1,56 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#93F3F0"
-    tools:context=".MyCard3">
+    tools:context=".MyCard3"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv.exp"
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv.cvv"
-        app:layout_constraintStart_toStartOf="@+id/tv.cvv"
-        app:layout_constraintTop_toBottomOf="@+id/tv.cvv" />
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="26dp"
+        android:text="Card Info"
+        android:textColor="@color/black"
+        android:textSize="36sp" />
+
 
     <TextView
         android:id="@+id/tv.card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv.cvv"
-        app:layout_constraintStart_toStartOf="@+id/tv.cvv"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        android:layout_marginStart="27dp"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tv.cvv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="13dp"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/tv.card" />
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tv.exp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/btn.delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="remove this card"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"
+        android:layout_marginTop="90dp"
+        app:backgroundTint="#01ACA4"/>
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="67dp"
-        android:layout_marginTop="27dp"
-        android:text="Card Info"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

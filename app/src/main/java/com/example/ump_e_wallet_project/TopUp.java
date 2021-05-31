@@ -60,12 +60,12 @@ public class TopUp extends AppCompatActivity {
                     String x = eta.getText().toString();
                     int a = Integer.parseInt(x.replaceAll("[\\D]" , "" ));
                     topUp(a,uid);
-                    Toast.makeText(TopUp.this,"Radio Button not checked",Toast.LENGTH_SHORT).show();
+
                 }else{
                     String str = eta.getText().toString();
                     int amount = Integer.parseInt(str.replaceAll("[\\D]" , "" ));
                     topUp(amount,uid);
-                    Toast.makeText(TopUp.this,"Radio Button checked",Toast.LENGTH_SHORT).show();
+
                 }
 
 
