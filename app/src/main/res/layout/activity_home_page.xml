@@ -37,7 +37,18 @@
         android:id="@+id/iv.imageview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         tools:srcCompat="@drawable/ic_launcher_background" />
+
+    <Button
+        android:id="@+id/btn.upload"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:onClick="uploadImage"
+        app:backgroundTint="#01ACA4"
+        android:text="Upload Profile Picture" />
 
     <TextView
         android:id="@+id/textView4"
@@ -132,11 +143,6 @@
         android:layout_marginTop="90dp"
         app:backgroundTint="#01ACA4"/>
 
-    <Button
-        android:id="@+id/btn.upload"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:onClick="uploadImage"
-        android:text="Upload Profile Picture" />
+
 
 </LinearLayout>
