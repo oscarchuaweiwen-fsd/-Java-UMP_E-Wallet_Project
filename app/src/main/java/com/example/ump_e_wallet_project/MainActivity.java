@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                                         Intent homepage = new Intent(MainActivity.this,HomePage.class);
                                         startActivity(homepage);
 
-                                        if(uid.equals("qnMrz6BvpBXI7az4iC2bh2E10m33")){
+                                        if(uid.equals("UxxzQglJZcdvGUGwzWPQXW04vyR2")){
                                             Intent adminpage = new Intent(MainActivity.this,AdminPay.class);
                                             startActivity(adminpage);
                                         }

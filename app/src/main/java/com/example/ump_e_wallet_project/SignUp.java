@@ -70,78 +70,99 @@ public class SignUp extends AppCompatActivity {
         buttonsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFirebaseAuth.fetchSignInMethodsForEmail(email.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                String emailid = email.getText().toString();
+                String passwordid = password.getText().toString();
+                String passwordidc = passwordc.getText().toString();
+                if(emailid.isEmpty()){
+                    email.setError("Please enter your email address!");
+                    email.requestFocus();
+                }else if(passwordid.isEmpty()){
+                    password.setError("Please enter your password!");
+                    password.requestFocus();
+                }else if(!(emailid.isEmpty() && passwordid.isEmpty()))
+                {
+                    mFirebaseAuth.fetchSignInMethodsForEmail(email.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
 
-                                boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+                                    boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
 
-                                if (isNewUser) {
-                                    String emailid = email.getText().toString();
-                                    String passwordid = password.getText().toString();
+                                    if (isNewUser) {
 
-                                    if (emailid.isEmpty()) {
-                                        email.setError("Please enter your email address!");
-                                        email.requestFocus();
-                                    } else if (passwordid.isEmpty()) {
-                                        password.setError("Please enter your password!");
-                                        password.requestFocus();
-                                    } else if (!(emailid.isEmpty() && passwordid.isEmpty())) {
 
-                                        if (passwordid.length() < 6) {
-                                            password.setError("Password is less than 6 character!");
-                                        } else {
-                                            mFirebaseAuth.createUserWithEmailAndPassword(emailid, passwordid).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                                    if (!task.isSuccessful()) {
-                                                        Toast.makeText(SignUp.this, "Sign Up Unsuccessful!", Toast.LENGTH_SHORT).show();
-                                                    } else {
-                                                        Toast.makeText(SignUp.this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
+                                        if (emailid.isEmpty()) {
+                                            email.setError("Please enter your email address!");
+                                            email.requestFocus();
+                                        } else if (passwordid.isEmpty()) {
+                                            password.setError("Please enter your password!");
+                                            password.requestFocus();
+                                        } else if (!(emailid.isEmpty() && passwordid.isEmpty())) {
 
-                                                        FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                                                        String id = mFirebaseAuth.getCurrentUser().getUid();
-                                                        String name1 = name.getText().toString();
-                                                        String phonenumber1 = phonenumber.getText().toString();
-                                                        String email1 = email.getText().toString();
+                                            if (passwordid.length() < 6) {
+                                                password.setError("Password is less than 6 character!");
+                                                password.requestFocus();
+                                            } else {
 
-                                                        Map<String, Object> userinfo = new HashMap<>();
-                                                        userinfo.put("name", name1);
-                                                        userinfo.put("phonenumber", phonenumber1);
-                                                        userinfo.put("email", email1);
-                                                        userinfo.put("balance", "0");
+                                                if(!passwordid.equals(passwordidc)){
+                                                    passwordc.setError("Password is not same,please try it again!");
+                                                    passwordc.requestFocus();
+                                                }else{
+                                                    mFirebaseAuth.createUserWithEmailAndPassword(emailid, passwordid).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                                            if (!task.isSuccessful()) {
+                                                                Toast.makeText(SignUp.this, "Sign Up Unsuccessful!", Toast.LENGTH_SHORT).show();
+                                                            } else {
+                                                                Toast.makeText(SignUp.this, "Sign Up Successful!", Toast.LENGTH_SHORT).show();
 
-                                                        db.collection("user").document(id).set(userinfo);
+                                                                FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                                                                String id = mFirebaseAuth.getCurrentUser().getUid();
+                                                                String name1 = name.getText().toString();
+                                                                String phonenumber1 = phonenumber.getText().toString();
+                                                                String email1 = email.getText().toString();
 
-                                                        user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void aVoid) {
-                                                                Toast.makeText(SignUp.this, "Verification Email Has Been Sent!", Toast.LENGTH_SHORT).show();
+                                                                Map<String, Object> userinfo = new HashMap<>();
+                                                                userinfo.put("name", name1);
+                                                                userinfo.put("phonenumber", phonenumber1);
+                                                                userinfo.put("email", email1);
+                                                                userinfo.put("balance", "0");
+
+                                                                db.collection("user").document(id).set(userinfo);
+
+                                                                user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                    @Override
+                                                                    public void onSuccess(Void aVoid) {
+                                                                        Toast.makeText(SignUp.this, "Verification Email Has Been Sent!", Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                }).addOnFailureListener(new OnFailureListener() {
+                                                                    @Override
+                                                                    public void onFailure(@NonNull Exception e) {
+                                                                        Log.d("TAG", "Verification Email Sent Error" + e.getMessage());
+                                                                    }
+                                                                });
+
+                                                                Intent back2home = new Intent(SignUp.this, MainActivity.class);
+                                                                startActivity(back2home);
                                                             }
-                                                        }).addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                Log.d("TAG", "Verification Email Sent Error" + e.getMessage());
-                                                            }
-                                                        });
-
-                                                        Intent back2home = new Intent(SignUp.this, MainActivity.class);
-                                                        startActivity(back2home);
-                                                    }
+                                                        }
+                                                    });
                                                 }
-                                            });
+                                            }
+
                                         }
 
+                                    } else {
+                                        email.setError("Email existed!");
+                                        email.requestFocus();
                                     }
 
-                                } else {
-                                   email.setError("Email existed!");
-                                   email.requestFocus();
                                 }
+                            });
+                }
 
-                            }
-                        });
+
+
             }
         });
     }
