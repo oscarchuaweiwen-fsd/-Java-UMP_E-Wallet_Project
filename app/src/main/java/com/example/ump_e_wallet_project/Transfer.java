@@ -73,8 +73,7 @@ public class Transfer extends AppCompatActivity {
                     }
 
                 if(validationphonenumber==false){
-                    searchPerson.setError("Contact Not Registered!");
-                    searchPerson.requestFocus();
+                    Toast.makeText(Transfer.this,"Register not found!",Toast.LENGTH_SHORT);
                 }
 
             }
